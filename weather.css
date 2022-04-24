@@ -1,0 +1,43 @@
+
+/* box*/
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background-image: url('city.jpg');
+}
+.card {
+    display: flex;
+    justify-content: center;
+    width: 20em;
+    height: 20em;
+    background-color: rgb(102, 170, 209);
+    border-radius: 20px;
+    opacity: .9;
+}
+.search{
+    justify-content: center;
+    margin: 40px;
+}
+input.search-bar {
+    outline: none;
+    font-family: inherit;
+    padding: .5em;
+    border-radius: 1em;
+    border: none;
+}
+.city{
+    display: flex;
+    justify-content: center;
+}
+.temp {
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+}
+button {
+    padding: -10px;
+
+}
