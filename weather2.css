@@ -1,0 +1,80 @@
+
+/* box*/
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.card {
+    display: flex;
+    justify-content: center;
+    width: 20em;
+    height: 25em;
+    background-color: rgb(32, 57, 63);
+    border-radius: 20px;
+    opacity: .5;
+}
+.search{
+    justify-content: center;
+    margin: 40px;
+}
+input.search-bar {
+    outline: none;
+    font-family: inherit;
+    padding: .5em;
+    border-radius: 1em;
+    border: none;
+    opacity: .7;
+    z-index: 2
+}
+#description {
+    margin: 0 0 0 0px;
+    padding: 0 0 0 0px;
+    font-size: 20px;
+    color: white;
+}
+#temp{
+    display: flex;
+    justify-content: center;
+    margin: 25px 0 50px 0px;
+    padding: 0 0 0 0px;
+    font-size: 20px;
+    color: white;
+}
+#humidity {
+    margin: 0 0 0 0px;
+    padding: 0 0 0 0px;
+    font-size: 20px;
+    color: white;
+}
+#wind {
+    margin: 0 0 0 0px;
+    padding: 0 0 0 0px;
+    font-size: 20px;
+    color: white;
+}
+#h3 {
+    display: flex;
+    justify-content: center;
+    padding: 0 0 0 0px;
+    color: white;
+}
+#city{
+    display: flex;
+    justify-content: center;
+    margin: 50px 0 0 0px;
+    padding: 0 0 0 0px;
+    font-size: 20px;
+    color: white;
+}
+button {
+    top: 10px;
+    padding: 6px;
+    opacity: .7;
+    padding: .5em;
+    border-radius: .9em;
+    border: none;
+    left: -20px;
+    z-index: 3
+}

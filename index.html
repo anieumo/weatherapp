@@ -5,38 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
-    <link rel="stylesheet" href="weather.css">
-    <script src="weather.js"></script>
+    <link rel="stylesheet" href="weather2.css">
+    <script src="weather2.js"></script>
+    <style>body {
+        
+        background-image: url('image2.jpg');
+        background-attachment: fixed;
+        background-size: cover;
+        background-blend-mode: multiply;
+    }
+    </style>
 </head>
 <body>
     <div class="card">
         <div class="search">
             <input id="userInput" type="text" class="search-bar">
-            <button onclick="myFunction()"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"></path><path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"></path></svg></button>
-            <script>
-                function myFunction() {
-                var x = document.getElementById("userInput").value;
-                async function getWeather() {
-                    const response =
-                    await fetch("https://api.openweathermap.org/data/2.5/weather?q="
-                    + x
-                    + "&appid=482d2f31dc8b7beafbff108ae04a732b", {mode: 'cors'})
-                    const myData = await response.json();
-                            console.log(myData.name)
-                            console.log(myData.main.feels_like)
-                            console.log(myData.main.humidity)
-                            console.log(myData.wind.speed)
-                        }
-                    getWeather();
-                }
-            </script>
+            <button onclick="myFunction()"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z"></path></svg></button>
         <div class="weather"> 
-            <h2 id="city">Long Beach</h2>
-            <div id="temp">°C</div>
+            <h2 id="city"></h2>
+            <div id="temp"></div>
             <img src="#" alt="" class="icon"/>
-            <div id="description">Rain</div>
-            <div id="humidity">Humidity: 50%</div>
-            <div id="wind">Wind Speed:</div><p>60</p>
+            <div id="description"></div><!--
+            --><div id="humidity"></div><!--
+            --><div id="wind"></div>
     </div>
 </body>
 
