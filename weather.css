@@ -1,43 +1,109 @@
 
 /* box*/
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:200');
+
+body  {
+    background-image: url('https://static.pexels.com/photos/414171/pexels-photo-414171.jpeg');
+  background-size:cover;
+        -webkit-animation: slidein 100s;
+        animation: slidein 100s;
+
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+
+        -webkit-animation-direction: alternate;
+        animation-direction: alternate;              
+}
+
+@-webkit-keyframes slidein {
+from {background-position: top; background-size:3000px; }
+to {background-position: -100px 0px;background-size:2750px;}
+}
+
+@keyframes slidein {
+from {background-position: top;background-size:3000px; }
+to {background-position: -100px 0px;background-size:2750px;}
+
+}
+
+
+
+
+
+
+
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     width: 100%;
-    background-image: url('city.jpg');
+    /* background-image: url('360_F_379844794_4zT8uTKOCukFzhHvw2sNWmm0yK2LcuTW.jpg'); */
+    /* background-color: rgb(175, 102, 209); */
 }
 .card {
-    display: flex;
     justify-content: center;
-    width: 20em;
-    height: 20em;
-    background-color: rgb(102, 170, 209);
+    width: 50em;
+    height: 40em;
+    background-color: transparent;
+    opacity: .7;
     border-radius: 20px;
     opacity: .9;
+    margin-top: 100px; 
+}
+.weather{
+    text-align: center;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+    margin-top: 50px; 
 }
 .search{
     justify-content: center;
-    margin: 40px;
+    text-align: center;
+    margin-top: 50px;
+
 }
 input.search-bar {
     outline: none;
     font-family: inherit;
-    padding: .5em;
-    border-radius: 1em;
+    padding: .8em;
+    border-radius: 1.5em;
     border: none;
+    width: 175px;
+    background-color: white;
 }
+
 .city{
-    display: flex;
     justify-content: center;
+    text-align: center;
+    margin-top: 20px;
 }
 .temp {
-    display: flex;
+    /* font-size: 20px; */
     justify-content: center;
-    font-size: 50px;
+    text-align: center;
+    font-size: 40px;
+    text-align: center;
+    margin: 30px;
 }
-button {
-    padding: -10px;
-
+.searchbutton {
+    padding: 10px;
+    border-radius: 100px;
+    outline: none;
+    border: none;
+    width: 37px;
+    background-color: white;
+    position: absolute;
+    margin-left: 5px; 
+    /* bottom:12px;left:180px */
+}
+.icon {
+    weight: 100px;
+    height: 100px;
+    object-fit: contain;
+    text-align: center;
 }
