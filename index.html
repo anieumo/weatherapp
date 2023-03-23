@@ -33,31 +33,30 @@
                     + x
                     + "&appid=482d2f31dc8b7beafbff108ae04a732b", {mode: 'cors'})
                     const myData = await response.json();
-                            if (!myData.ok) {
-                                alert("Misspelled city name")
-                                return
-                            }
-                            console.log(myData)
-                            console.log(myData.name)
+                        if (myData.message === "city not found") {
+                            alert("city not found")
+                            return
+                        } else {
                             document.getElementById("city").innerText = myData.name
-                            console.log(myData.main.feels_like)
                             document.getElementById("description").innerText = myData.weather[0].description
                             temp = ((myData.main.feels_like - 273.15) * (9/5) + 32).toFixed(1)
-                            console.log(myData.weather[0].icon )
+
                             document.getElementById("icon").src = "https://openweathermap.org/img/wn/" + myData.weather[0].icon + "@2x.png"
-                            console.log(document.getElementById("icon").src)
+
                             document.getElementById("temp").innerText = temp + " °F"
-                            console.log(myData.main.humidity)
+
                             document.getElementById("humidity").innerText = "humidity: " + myData.main.humidity
-                            console.log(myData.wind.speed)
+
                             windspeed = (myData.wind.speed * 2.237).toFixed(0)
-                            document.getElementById("wind").innerText = "wind speed: " + windspeed + " mph"
-                            console.log(myData.main.temp_min)
+
                             todaytempmin = ((myData.main.temp_min - 273.15) * (9/5) + 32).toFixed(1)
-                            console.log(myData.main.temp_max)
+
                             todaytempmax = ((myData.main.temp_max - 273.15) * (9/5) + 32).toFixed(1)
                         }
-                    getWeather();
+                    }
+                
+                getWeather();
+             
 
                 
                 const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
@@ -74,17 +73,14 @@
                     const weekData = await response.json();
                     const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday", "Sunday","Monday","Tuesday","Wednesday","Thursday","Friday"];
                     const d = new Date();
-                        console.log(weekData)
-                        console.log(weekData.list[0].main.feels_like)
-
+                    
                         document.getElementById("temp0").innerText = ((weekData.list[0].main.feels_like - 273.15) * (9/5) + 32).toFixed(1) + " °"
                         document.getElementById("icon0").src = "https://openweathermap.org/img/wn/" + weekData.list[0].weather[0].icon + "@2x.png"
                         day = weekday[d.getDay() + 1]
                         if (day > 9) {
                             day.slice(1,2)
                         }
-                        document.getElementById("day0").innerText = day
-                        console.log(weekData.list[1].main.feels_like) 
+                        document.getElementById("day0").innerText = day 
                         document.getElementById("temp1").innerText = ((weekData.list[1].main.feels_like - 273.15) * (9/5) + 32).toFixed(1) + " °"
                         document.getElementById("icon1").src = "https://openweathermap.org/img/wn/" + weekData.list[1].weather[0].icon + "@2x.png"
                         day = weekday[d.getDay() + 2]
@@ -92,7 +88,6 @@
                             day.slice(1,2)
                         }
                         document.getElementById("day1").innerText = day
-                        console.log(weekData.list[2].main.feels_like)
                         document.getElementById("temp2").innerText = ((weekData.list[2].main.feels_like - 273.15) * (9/5) + 32).toFixed(1) + " °"
                         document.getElementById("icon2").src = "https://openweathermap.org/img/wn/" + weekData.list[2].weather[0].icon + "@2x.png"
                         day = weekday[d.getDay() + 3]
@@ -100,7 +95,6 @@
                             day.slice(1,2)
                         }
                         document.getElementById("day2").innerText = day
-                        console.log(weekData.list[3].main.feels_like)
                         document.getElementById("temp3").innerText = ((weekData.list[3].main.feels_like - 273.15) * (9/5) + 32).toFixed(1) + " °"
                         document.getElementById("icon3").src = "https://openweathermap.org/img/wn/" + weekData.list[3].weather[0].icon + "@2x.png"
                         day = weekday[d.getDay() + 4]
@@ -108,7 +102,6 @@
                             day.slice(1,2)
                         }
                         document.getElementById("day3").innerText = day
-                        console.log(weekData.list[4].main.feels_like)
                         document.getElementById("temp4").innerText = ((weekData.list[4].main.feels_like - 273.15) * (9/5) + 32).toFixed(1) + " °"
                         document.getElementById("icon4").src = "https://openweathermap.org/img/wn/" + weekData.list[4].weather[0].icon + "@2x.png"
                         day = weekday[d.getDay() + 5]
@@ -117,7 +110,6 @@
                             day.slice(1,2)
                         }
                         document.getElementById("day4").innerText = day
-                        console.log(weekData.list[5].main.feels_like)
                         document.getElementById("temp5").innerText = ((weekData.list[5].main.feels_like - 273.15) * (9/5) + 32).toFixed(1) + " °"
                         document.getElementById("icon5").src = "https://openweathermap.org/img/wn/" + weekData.list[5].weather[0].icon + "@2x.png"
                         day = weekday[d.getDay() + 6]
@@ -126,7 +118,6 @@
                             day.slice(1,2)
                         }
                         document.getElementById("day5").innerText = day
-                        console.log(weekData.list[6].main.feels_like)
                         document.getElementById("temp6").innerText = ((weekData.list[6].main.feels_like - 273.15) * (9/5) + 32).toFixed(1) + " °"
                         document.getElementById("icon6").src = "https://openweathermap.org/img/wn/" + weekData.list[6].weather[0].icon + "@2x.png"
                         day = weekday[d.getDay() + 7]
@@ -135,10 +126,9 @@
                             day.slice(1,2)
                         }
                         document.getElementById("day6").innerText = day
-
-                        // console.log(weekData.dt)
                     }
                     getWeeklyWeather();
+
  
                 }
             </script>
