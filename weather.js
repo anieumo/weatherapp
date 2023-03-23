@@ -18,6 +18,8 @@ function getweather(city) {
             response.json()
         }
         .then(data) => weatherdisplay(); /* rest API*/
+
+        fetch("https://api.openweathermap.org/data/2.5/forecast/daily?q=" + city + "&cnt=" + 7 + "&appid=482d2f31dc8b7beafbff108ae04a732")
 }
 
 /* take a location and return the weather data for that location*/

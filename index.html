@@ -23,12 +23,20 @@
             <script>
                 function myFunction() {
                 var x = document.getElementById("userInput").value;
+                if (x == "") {
+                    alert("Please enter a city")
+                    return
+                }
                 async function getWeather() {
                     const response =
                     await fetch("https://api.openweathermap.org/data/2.5/weather?q="
                     + x
                     + "&appid=482d2f31dc8b7beafbff108ae04a732b", {mode: 'cors'})
                     const myData = await response.json();
+                            if (!myData.ok) {
+                                alert("Misspelled city name")
+                                return
+                            }
                             console.log(myData)
                             console.log(myData.name)
                             document.getElementById("city").innerText = myData.name
@@ -44,30 +52,142 @@
                             console.log(myData.wind.speed)
                             windspeed = (myData.wind.speed * 2.237).toFixed(0)
                             document.getElementById("wind").innerText = "wind speed: " + windspeed + " mph"
-
+                            console.log(myData.main.temp_min)
+                            todaytempmin = ((myData.main.temp_min - 273.15) * (9/5) + 32).toFixed(1)
+                            console.log(myData.main.temp_max)
+                            todaytempmax = ((myData.main.temp_max - 273.15) * (9/5) + 32).toFixed(1)
                         }
                     getWeather();
 
-                // function updateDisplay() {
-                //     console.log(cityname)
-                //     console.log(tempname)
-                //     console.log()
-                //     document.getElementById("city").innerText = "Weather in " + city;
-                //     document.getElementById("temp").innerText = temp + " °C";
-                //     document.getElementById("description").innerText = description;
-                //     document.getElementById("humidity").innerText = humidity;
-                //     document.getElementById("wind").innerText = speed;
-                //     }
+                
+                const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+                const d = new Date();
+
+
+                async function getWeeklyWeather() {
+                    const response =
+                    await fetch("https://api.openweathermap.org/data/2.5/forecast?q="
+                    + x
+                    + "&cnt="
+                    + 7
+                    + "&appid=7fd40049ce5d1eeaaa783c2d81f1e76f", {mode: 'cors'})
+                    const weekData = await response.json();
+                    const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday", "Sunday","Monday","Tuesday","Wednesday","Thursday","Friday"];
+                    const d = new Date();
+                        console.log(weekData)
+                        console.log(weekData.list[0].main.feels_like)
+
+                        document.getElementById("temp0").innerText = ((weekData.list[0].main.feels_like - 273.15) * (9/5) + 32).toFixed(1) + " °"
+                        document.getElementById("icon0").src = "https://openweathermap.org/img/wn/" + weekData.list[0].weather[0].icon + "@2x.png"
+                        day = weekday[d.getDay() + 1]
+                        if (day > 9) {
+                            day.slice(1,2)
+                        }
+                        document.getElementById("day0").innerText = day
+                        console.log(weekData.list[1].main.feels_like) 
+                        document.getElementById("temp1").innerText = ((weekData.list[1].main.feels_like - 273.15) * (9/5) + 32).toFixed(1) + " °"
+                        document.getElementById("icon1").src = "https://openweathermap.org/img/wn/" + weekData.list[1].weather[0].icon + "@2x.png"
+                        day = weekday[d.getDay() + 2]
+                        if (day > 9) {
+                            day.slice(1,2)
+                        }
+                        document.getElementById("day1").innerText = day
+                        console.log(weekData.list[2].main.feels_like)
+                        document.getElementById("temp2").innerText = ((weekData.list[2].main.feels_like - 273.15) * (9/5) + 32).toFixed(1) + " °"
+                        document.getElementById("icon2").src = "https://openweathermap.org/img/wn/" + weekData.list[2].weather[0].icon + "@2x.png"
+                        day = weekday[d.getDay() + 3]
+                        if (day > 9) {
+                            day.slice(1,2)
+                        }
+                        document.getElementById("day2").innerText = day
+                        console.log(weekData.list[3].main.feels_like)
+                        document.getElementById("temp3").innerText = ((weekData.list[3].main.feels_like - 273.15) * (9/5) + 32).toFixed(1) + " °"
+                        document.getElementById("icon3").src = "https://openweathermap.org/img/wn/" + weekData.list[3].weather[0].icon + "@2x.png"
+                        day = weekday[d.getDay() + 4]
+                        if (day > 9) {
+                            day.slice(1,2)
+                        }
+                        document.getElementById("day3").innerText = day
+                        console.log(weekData.list[4].main.feels_like)
+                        document.getElementById("temp4").innerText = ((weekData.list[4].main.feels_like - 273.15) * (9/5) + 32).toFixed(1) + " °"
+                        document.getElementById("icon4").src = "https://openweathermap.org/img/wn/" + weekData.list[4].weather[0].icon + "@2x.png"
+                        day = weekday[d.getDay() + 5]
+                        console.log(day)
+                        if (day > 9) {
+                            day.slice(1,2)
+                        }
+                        document.getElementById("day4").innerText = day
+                        console.log(weekData.list[5].main.feels_like)
+                        document.getElementById("temp5").innerText = ((weekData.list[5].main.feels_like - 273.15) * (9/5) + 32).toFixed(1) + " °"
+                        document.getElementById("icon5").src = "https://openweathermap.org/img/wn/" + weekData.list[5].weather[0].icon + "@2x.png"
+                        day = weekday[d.getDay() + 6]
+                        console.log(day)
+                        if (day > 9) {
+                            day.slice(1,2)
+                        }
+                        document.getElementById("day5").innerText = day
+                        console.log(weekData.list[6].main.feels_like)
+                        document.getElementById("temp6").innerText = ((weekData.list[6].main.feels_like - 273.15) * (9/5) + 32).toFixed(1) + " °"
+                        document.getElementById("icon6").src = "https://openweathermap.org/img/wn/" + weekData.list[6].weather[0].icon + "@2x.png"
+                        day = weekday[d.getDay() + 7]
+                        console.log(day)
+                        if (day > 9) {
+                            day.slice(1,2)
+                        }
+                        document.getElementById("day6").innerText = day
+
+                        // console.log(weekData.dt)
+                    }
+                    getWeeklyWeather();
+ 
                 }
             </script>
         <div class="weather"> 
             <h2 class="city" id="city"></h2>
             <div class="temp" id="temp"></div>
-            <img src="" alt="" id="icon" class="icon"/>
-            <div class="description" id="description"></div>
             <div class="humidity" id="humidity"></div>
             <div class="wind" id="wind"></div>
+            <img src="" alt="" id="icon" class="icon"/>
+            <div class="description" id="description"></div>
+            <!-- <div class="humidity" id="humidity"></div>
+            <div class="wind" id="wind"></div> -->
         </div>
+        <div class="weather-weekly">
+            <div class="template" id="0">
+                <h3 class="day" id="day0"></h3>
+                <img src="" alt="" id="icon0" class="icon"/>
+                <h3 id="temp0"></h3>
+            </div>
+            <div class="template" id="1">
+                <h3 class="day" id="day1"></h3>
+                <img src="" alt="" id="icon1" class="icon"/>
+                <h3 id="temp1"></h3>
+            </div>
+            <div class="template" id="2">
+                <h3 class="day" id="day2"></h3>
+                <img src="" alt="" id="icon2" class="icon"/>
+                <h3 id="temp2"></h3>
+            </div>
+            <div class="template" id="3">
+                <h3 class="day" id="day3"></h3>
+                <img src="" alt="" id="icon3" class="icon"/>
+                <h3 id="temp3"></h3>
+            </div>
+            <div class="template" id="4">
+                <h3 class="day" id="day4"></h3>
+                <img src="" alt="" id="icon4" class="icon"/>
+                <h3 id="temp4"></h3>
+            </div>
+            <div class="template" id="5">
+                <h3 class="day" id="day5"></h3>
+                <img src="" alt="" id="icon5" class="icon"/>
+                <h3 id="temp5"></h3>
+            </div>
+            <div class="template" id="6">
+                <h3 class="day" id="day6"></h3>
+                <img src="" alt="" id="icon6" class="icon"/>
+                <h3 id="temp6"></h3>
+            </div>
     </div>
 </body>
 
