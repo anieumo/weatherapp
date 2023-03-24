@@ -34,7 +34,7 @@
                     + "&appid=482d2f31dc8b7beafbff108ae04a732b", {mode: 'cors'})
                     const myData = await response.json();
                         if (myData.message === "city not found") {
-                            alert("city not found")
+                            alert("City not found")
                             return
                         } else {
                             document.getElementById("city").innerText = myData.name
